@@ -1,0 +1,19 @@
+RewriteEngine On
+
+# Ne pas rediriger si fichier réel
+# RewriteCond %{REQUEST_FILENAME} -f
+# RewriteRule ^ - [L]
+
+# Ne pas rediriger les requêtes AJAX
+RewriteCond %{HTTP:X-Requested-With} ^XMLHttpRequest$
+RewriteRule ^ - [L]
+
+# Ne pas rediriger les requêtes vers /controller/
+RewriteCond %{REQUEST_URI} ^/controller/
+RewriteRule ^ - [L]
+
+# Rediriger vers index.php sauf pour js, css, php
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !\.(js|css|php)$
+RewriteRule ^(.*) index.php [L,QSA]

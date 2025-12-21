@@ -1,0 +1,20 @@
+<?php
+
+namespace Model;
+
+
+class Personne extends AbstractActionBdd{
+    private $lastname;
+    private $firstname;
+    private $sex;
+    private $birthdate;
+
+    public function __construct($last_name, $first_name, $sex='', $birthdate='')
+    {
+        parent::__construct();
+        $this->lastname = $last_name;
+        $this->firstname = $first_name;
+        $this->sex = $sex;
+        $this->birthdate = $birthdate;
+    }
+}
